@@ -1,0 +1,5 @@
+torch==2.1.0
+langchain
+senetence-tranformers
+chromadb
+pypdf
