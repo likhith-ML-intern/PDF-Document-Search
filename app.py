@@ -3,7 +3,7 @@ import os, tempfile
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
+from langchain.vectorstores import FAISS
 
 def main():
     history = []
@@ -41,7 +41,7 @@ def main():
                                             model_kwargs={'device': 'cpu'})
 
             # Create vector store
-            vector_store = Chroma.from_documents(text_chunks, embedding=embeddings)
+            vector_store = FAISS.from_documents(text_chunks, embedding=embeddings)
             
             docs = vector_store.similarity_search(question)
             
